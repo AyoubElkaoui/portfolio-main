@@ -28,7 +28,7 @@ const Projects = () => {
                 variants={slideInFromLeft(0.5)}
                 className='text-[30px] text-white font-medium mt-[10px] text-center mb-[15px]'
             >
-                Crafting Tomorrow's Solutions, One Line of Code at a Time.
+                Crafting Tomorrow&apos;s Solutions, One Line of Code at a Time.
             </motion.div>
             <motion.div
                 variants={slideInFromRight(0.5)}

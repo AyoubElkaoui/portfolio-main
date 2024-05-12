@@ -1,36 +1,33 @@
-'use client';
 import React from "react";
 import { FaEnvelope, FaPhone, FaMap } from "react-icons/fa";
-import {motion} from "framer-motion";
-import {slideInFromLeft, slideInFromRight, slideInFromTop} from "@/utils/motion";
-import {SparklesIcon} from "@heroicons/react/24/solid";
-
-
+import { motion } from "framer-motion";
+import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion";
+import { SparklesIcon } from "@heroicons/react/24/solid";
 
 const Contact = () => {
     // Function to handle form submission
-        async function handleSubmit(event) {
-            event.preventDefault();
-            const formData = new FormData(event.target);
+    async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+        event.preventDefault();
+        const formData = new FormData(event.currentTarget);
 
-            formData.append("access_key", "0c0baa3b-a659-4cab-ac36-70379836c6ee");
+        formData.append("access_key", "0c0baa3b-a659-4cab-ac36-70379836c6ee");
 
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
 
-            const response = await fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: json
-            });
-            const result = await response.json();
-            if (result.success) {
-                console.log(result);
-            }
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                Accept: "application/json"
+            },
+            body: json
+        });
+        const result = await response.json();
+        if (result.success) {
+            console.log(result);
         }
+    }
 
     return (
         <div className="flex flex-col items-center justify-center z-20" id="contact">
@@ -47,7 +44,7 @@ const Contact = () => {
                 variants={slideInFromLeft(0.5)}
                 className='text-[30px] text-white font-medium mt-[10px] text-center mb-[15px]'
             >
-                Let's Talk Tech: Building Bridges, One Message at a Time.
+                Let&apos;s Talk Tech: Building Bridges, One Message at a Time.
             </motion.div>
             <motion.div
                 variants={slideInFromRight(0.5)}
@@ -57,7 +54,7 @@ const Contact = () => {
             </motion.div>
             <div className="flex justify-center items-center space-x-80 ">
                 {/* Contact Form Card */}
-                <div className="bg-gray-800 rounded-lg p-8 w-screen" style={{ margin : "0 25%"}}>
+                <div className="bg-gray-800 rounded-lg p-8 w-screen" style={{ margin: "0 25%" }}>
                     <h2 className="text-xl font-semibold text-white mb-4">Contact Form</h2>
                     <form onSubmit={handleSubmit} className="flex flex-col space-y-4" method="post">
                         {/* Form Inputs */}
@@ -76,7 +73,7 @@ const Contact = () => {
                         <textarea
                             name="message"
                             placeholder="Your Message"
-                            rows="4"
+                            rows={4}
                             className="bg-gray-700 rounded-md p-3 text-white"
                         ></textarea>
                         {/* Submit Button */}

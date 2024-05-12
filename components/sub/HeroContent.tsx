@@ -45,9 +45,9 @@ const HeroContent = () => {
               className="text-lg text-gray-400 my-5 max-w-[600px]"
           >
             Welcome! I&apos;m Ayoub El Kaoui, a 24-year-old student software developer currently
-            studying at Hogeschool Utrecht. I'm deeply passionate about coding and constantly seeking
+            studying at Hogeschool Utrecht. I&apos;m deeply passionate about coding and constantly seeking
             new opportunities to learn and grow. Join me on this journey as I showcase my projects and
-            share my enthusiasm for the world of software development. Let's innovate together!
+            share my enthusiasm for the world of software development. Let&apos;s innovate together!
           </motion.p>
           <motion.a
               variants={slideInFromLeft(1)}
