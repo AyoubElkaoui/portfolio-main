@@ -79,7 +79,7 @@ const Projects = () => {
                 />
                 <ProjectCard
                     src="/loodgieter.png"
-                    title="AD-loodgietersbedrij"
+                    title="AD-loodgietersbedrijf"
                     description="A plumber in Maarssen asked me to build a simple website. This was built in WordPress and SEO was also worked on."
                     languages={["Wordpress"]}
                     webSkills={["SEO", "SEA"]}
