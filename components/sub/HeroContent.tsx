@@ -28,7 +28,7 @@ const HeroContent = () => {
 
           <motion.div
               variants={slideInFromLeft(0.5)}
-              className="flex flex-col gap-6 mt-6 text-6xl font-bold text-white max-w-[600px] w-auto h-auto"
+              className="flex flex-col gap-6 mt-6 text-6xl font-bold text-white max-w-[600px] w-auto h-auto z-[30]"
           >
           <span>
             Ayoub
@@ -42,7 +42,7 @@ const HeroContent = () => {
 
           <motion.p
               variants={slideInFromLeft(0.8)}
-              className="text-lg text-gray-400 my-5 max-w-[600px]"
+              className="text-lg text-gray-400 my-5 max-w-[600px] z-[30]"
           >
             Welcome! I&apos;m Ayoub El Kaoui, a 24-year-old student software developer currently
             studying at Hogeschool Utrecht. I&apos;m deeply passionate about coding and constantly seeking
@@ -51,7 +51,7 @@ const HeroContent = () => {
           </motion.p>
           <motion.a
               variants={slideInFromLeft(1)}
-              className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px]"
+              className="py-2 button-primary text-center text-white cursor-pointer rounded-lg max-w-[200px] z-[30]"
           >
             <a href={"#skills"}>Learn More!</a>
           </motion.a>
