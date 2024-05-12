@@ -1,5 +1,5 @@
 {
-  "name": "spaceportfolio",
+  "name": "ayoub-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -17,7 +17,10 @@
     "nodemailer": "^6.9.13",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-icons": "^4.11.0"
+    "react-google-recaptcha": "^3.1.0",
+    "react-google-recaptcha-v3": "^1.10.1",
+    "react-icons": "^4.11.0",
+    "react-recaptcha": "^2.3.10"
   },
   "devDependencies": {
     "@react-three/drei": "^9.88.4",
@@ -26,6 +29,7 @@
     "@types/nodemailer": "^6.4.15",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/react-recaptcha": "^2.3.7",
     "autoprefixer": "^10",
     "eslint": "^8",
     "eslint-config-next": "13.5.6",

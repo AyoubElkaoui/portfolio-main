@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaEnvelope, FaPhone, FaMap } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
+import Recaptcha from "react-recaptcha";
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+    const [successMessage, setSuccessMessage] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const [captchaVerified, setCaptchaVerified] = useState(false);
+
     // Function to handle form submission
     async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault();
-        const formData = new FormData(event.currentTarget);
 
+        if (!captchaVerified) {
+            setErrorMessage("Please verify reCAPTCHA.");
+            return;
+        }
+
+        const formData = new FormData(event.currentTarget);
         formData.append("access_key", "0c0baa3b-a659-4cab-ac36-70379836c6ee");
 
         const object = Object.fromEntries(formData);
@@ -25,7 +40,32 @@ const Contact = () => {
         });
         const result = await response.json();
         if (result.success) {
+            setSuccessMessage("Message sent successfully!");
+            setErrorMessage("");
             console.log(result);
+            // Reset form fields
+            setFormData({ name: "", email: "", message: "" });
+        } else {
+            setSuccessMessage("");
+            setErrorMessage("Failed to send message. Please try again later.");
+        }
+    }
+
+
+    // Function to handle input change
+    function handleInputChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+        const { name, value } = event.target;
+        setFormData({
+            ...formData,
+            [name]: value
+        });
+    }
+
+    // Callback function to handle reCAPTCHA verification
+    function onCaptchaVerify(response: string | null) {
+        if (response) {
+            setCaptchaVerified(true);
+            setErrorMessage("");
         }
     }
 
@@ -56,26 +96,40 @@ const Contact = () => {
                 {/* Contact Form Card */}
                 <div className="bg-gray-800 rounded-lg p-8 w-screen" style={{ margin: "0 25%" }}>
                     <h2 className="text-xl font-semibold text-white mb-4">Contact Form</h2>
+                    {successMessage && <p className="text-green-500">{successMessage}</p>}
+                    {errorMessage && <p className="text-red-500">{errorMessage}</p>}
                     <form onSubmit={handleSubmit} className="flex flex-col space-y-4" method="post">
                         {/* Form Inputs */}
                         <input
                             type="text"
                             name="name"
                             placeholder="Your Name"
+                            value={formData.name}
+                            onChange={handleInputChange}
                             className="bg-gray-700 rounded-md p-3 text-white"
                         />
                         <input
                             type="email"
                             name="email"
                             placeholder="Your Email"
+                            value={formData.email}
+                            onChange={handleInputChange}
                             className="bg-gray-700 rounded-md p-3 text-white"
                         />
                         <textarea
                             name="message"
                             placeholder="Your Message"
                             rows={4}
+                            value={formData.message}
+                            onChange={handleInputChange}
                             className="bg-gray-700 rounded-md p-3 text-white"
                         ></textarea>
+                        {/* reCAPTCHA */}
+                        <Recaptcha
+                            sitekey="6Lc62dkpAAAAALL70S4nPagzGuz4_kWkdSIUE8Yp"
+                            render="explicit"
+                            verifyCallback={onCaptchaVerify}
+                        />
                         {/* Submit Button */}
                         <button type="submit" className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-md transition duration-300">Send Message</button>
                         <a href="/Ayoub_Elkaoui_Full_Stack_Developer.pdf" download className="bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded-md transition duration-300 text-center">
@@ -97,8 +151,6 @@ const Contact = () => {
                         </div>
                     </form>
                 </div>
-
-
             </div>
         </div>
     );
