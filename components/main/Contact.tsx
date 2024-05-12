@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaEnvelope, FaPhone, FaMap } from "react-icons/fa";
+import { FaEnvelope, FaMap, FaGithub, FaLinkedin } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { slideInFromLeft, slideInFromRight, slideInFromTop } from "@/utils/motion";
 import { SparklesIcon } from "@heroicons/react/24/solid";
@@ -141,8 +141,12 @@ const Contact = () => {
                                 <span className="text-lg font-medium">Elkaoui.a@gmail.com</span>
                             </div>
                             <div className="flex items-center space-x-4">
-                                <FaPhone />
-                                <span className="text-lg font-medium">+31 6 85 72 23 87</span>
+                                <FaGithub />
+                                <a href="https://github.com/AyoubElkaoui/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium">GitHub</a>
+                            </div>
+                            <div className="flex items-center space-x-4">
+                                <FaLinkedin />
+                                <a href="https://www.linkedin.com/in/ayoub-elkaoui/" target="_blank" rel="noopener noreferrer" className="text-lg font-medium">LinkedIn</a>
                             </div>
                             <div className="flex items-center space-x-4">
                                 <FaMap />
